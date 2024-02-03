@@ -1,0 +1,85 @@
+{% extends "./layouts/base_admin.html" %} {% load static %} {% block content %}
+<div class="ms-content-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb pl-0">
+            <li class="breadcrumb-item"><a href="{% url "index" %}"><i class="material-icons">home</i>Página principal</a></li>
+            <li class="breadcrumb-item"><a href="#">Menu</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Editar Plato</li>
+          </ol>
+        </nav>
+      </div>
+      
+      <div class="col-xl-12 col-md-12">
+        <div class="ms-panel ms-panel-fh">
+          <div class="ms-panel-header">
+            <h6>Editar Plato</h6>
+          </div>
+          <div class="ms-panel-body">
+            <form action="{% url "editar_plato" %}" class="needs-validation clearfix" method="POST">
+              {% csrf_token %}
+              <div class="form-row">
+                <div class="col-md-12 mb-3">
+                  <label for="validationCustom18">Editar nombre del plato</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="validationCustom18" placeholder="{{name}}" name="name">
+                    
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="validationCustom25">Editar precio</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="validationCustom25" placeholder="{{precio}}" name="precio">
+                    
+                  </div>
+                  <label for="validationCustom25">Editar tiempo de elaboracion</label>
+                  <div class="input-group">
+                    <input type="time" class="form-control" id="validationCustom25" placeholder="{{tiempo_elaboracion}}" name="tiempo_elaboracion">
+                    
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label for="validationCustom12">Edita descripción</label>
+                  <div class="input-group">
+                    <textarea rows="5" id="validationCustom12" class="form-control" placeholder="{{historia}}" name="historia" ></textarea>
+                    
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  {% if disponible %}
+                  <label for="validationCustom12">Dejar de mostrar el plato</label>
+                  <label class="ms-switch">
+                    
+                    <input type="checkbox" name="no_disponible" value="True">
+                    <span
+                      class="ms-switch-slider ms-switch-danger round"
+                    ></span>
+                  </label>
+                  {% else %}
+                  <label for="validationCustom12">Volver a mostrar el plato</label>
+                  <label class="ms-switch">
+                    
+                    <input type="checkbox" name="disponible" value="True">
+                    <span
+                      class="ms-switch-slider ms-switch-success round"
+                    ></span>
+                  </label>
+                  {% endif %}
+                </div>
+                <label for="validationCustom12">Imagen del Plato</label>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="img">
+                    <label class="custom-file-label">Upload Images...</label>
+                  </div>
+                <button class="btn btn-primary d-block" value="{{id}}" name="id" type="submit">Editar</button>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock content %}

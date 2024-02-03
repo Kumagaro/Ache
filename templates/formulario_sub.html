@@ -1,0 +1,61 @@
+{% extends "./layouts/base_admin.html" %}
+{% load static %}
+
+{% block content %}
+<div class="ms-content-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb pl-0">
+            <li class="breadcrumb-item"><a href="{% url "index" %}"><i class="material-icons">home</i>Página principal</a></li>
+            <li class="breadcrumb-item"><a href="{% url "admin" %}">Menu</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Agregar Subcategoría</li>
+          </ol>
+        </nav>
+      </div>
+      
+      <div class="col-xl-12 col-md-12">
+        <div class="ms-panel ms-panel-fh">
+          <div class="ms-panel-header">
+            <h6>Agregar Subcategoría</h6>
+          </div>
+          <div class="ms-panel-body">
+            <form action="{% url "agregar_sub" %}" class="needs-validation clearfix" method="POST">
+              {% csrf_token %}
+              <div class="form-row">
+                <div class="col-md-12 mb-3">
+                  <label for="validationCustom18">Nombre de la subcategoría</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="validationCustom18" placeholder="Subcategoria" name="name" required>
+                    <div class="valid-feedback">
+                      Se escucha sabroso!
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="validationCustom22">Selecciona una Categoría</label>
+                  <div class="input-group">
+                    <select class="form-control" id="validationCustom22" name="categoria" required>
+                      <option value="Especiales">Especiales</option>
+                      <option value="Entrantes">Entrantes</option>
+                      <option value="Bebidas">Bebidas</option>
+                      <option value="Platos principales">Platos principales</option>
+                      <option value="Postre">Postres</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Por favor selecciona una categoría.
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <button class="btn btn-primary d-block" type="submit">Agregar</button>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock content %}

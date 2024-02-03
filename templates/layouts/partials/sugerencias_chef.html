@@ -1,0 +1,70 @@
+<div id="fh5co-featured" data-section="features">
+    <div class="container">
+        <div class="row text-center fh5co-heading row-padded">
+            <div class="col-md-8 col-md-offset-2">
+                <h2 class="heading to-animate">Especiales</h2>
+                <p class="sub-heading to-animate">Nuestro platos especiales estan pensados para el disfrute de su estancia en nuestro restaurante. Disfrutelos.</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for espe in especiales %}
+                {% if espe.activa %}
+                <div class="row text-center fh5co-heading row-padded">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="to-animate white">{{espe.name}}</h2>
+                    </div>
+                </div>
+                <div class="fh5co-grid">
+                        {% for pla in platos %}
+                            {% if pla.subcategoria_id == espe.id %}
+                            {% if pla.disponible %}
+                            {% if pla in pla_espe_01 %}
+                            <div class="fh5co-v-half btn-abrir-modal" data-id="{{pla.id}}">
+                                <div class="fh5co-h-row-2 to-animate-2">
+                                    <div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url({{pla.imagen.url}})"></div>
+                                    <div class="fh5co-v-col-2 fh5co-text arrow-left">
+                                        <h2>{{pla.name}}</h2>
+                                        <span class="pricing">${{pla.precio}}</span>
+                                        <p class="paragraph">{{pla.historia}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <dialog class="to-animate-2" id="modal-{{pla.id}}">
+                                <div class="modal-container">
+                                    <img src="{{pla.imagen.url}}" >
+                                    <h3>{{pla.name}}</h2>
+                                    <p>{{pla.historia}}</p>
+                                    <p class="precio">${{pla.precio}}</p>
+                                    <button class="btn-cerrar-modal">Cerrar</button>
+                                </div>
+                            </dialog>
+                            {% elif pla in pla_espe_02 %}
+                            <div class="fh5co-v-half btn-abrir-modal" data-id="{{pla.id}}">
+                                <div class="fh5co-h-row-2 to-animate-2">
+                                    <div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url({{pla.imagen.url}})"></div>
+                                    <div class="fh5co-v-col-2 fh5co-text arrow-left">
+                                        <h2>{{pla.name}}</h2>
+                                        <span class="pricing">${{pla.precio}}</span>
+                                        <p class="paragraph">{{pla.historia}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <dialog class="to-animate-2" id="modal-{{pla.id}}">
+                                <div class="modal-container">
+                                    <img src="{{pla.imagen.url}}" >
+                                    <h3>{{pla.name}}</h2>
+                                    <p>{{pla.historia}}</p>
+                                    <p class="precio">${{pla.precio}}</p>
+                                    <button class="btn-cerrar-modal">Cerrar</button>
+                                </div>
+                            </dialog>
+                            {% endif %}
+                            {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

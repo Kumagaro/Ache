@@ -1,0 +1,105 @@
+{% extends "./layouts/base_admin.html" %}
+{% load static %}
+
+{% block content %}
+<div class="ms-content-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb pl-0">
+            <li class="breadcrumb-item"><a href="{% url "index" %}"><i class="material-icons">home</i>Página principal</a></li>
+            <li class="breadcrumb-item"><a href="#">Menu</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Agregar Plato</li>
+          </ol>
+        </nav>
+      </div>
+      
+      <div class="col-xl-12 col-md-12">
+        <div class="ms-panel ms-panel-fh">
+          <div class="ms-panel-header">
+            <h6>Agregar Plato</h6>
+          </div>
+          <div class="ms-panel-body">
+            <form action="{% url "agregar_plato" %}" class="needs-validation clearfix" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-row">
+                <div class="col-md-12 mb-3">
+                  <label for="validationCustom18">Nombre del plato</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="validationCustom18" placeholder="Nombre del Plato" name="name" required>
+                    <div class="valid-feedback">
+                      Se escucha sabroso!
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+
+                  <label for="validationCustom22">Seleciona la subcategoría</label>
+                  <div class="input-group">
+                    <select class="form-control" id="validationCustom22" name="subcategoria" required>
+                      
+                      {% for s in sub %}
+                        {% if s.categoria == "Especiales" %}
+                          <option value="{{s.name}}">Especiales | {{s.name}}</option>
+                        {% elif s.categoria == "Bebidas" %}
+                          <option value="{{s.name}}">Bebidas | {{s.name}}</option>
+                        {% elif s.categoria == "Entrantes" %}
+                          <option value="{{s.name}}">Entrantes | {{s.name}}</option>
+                        {% elif s.categoria == "Platos principales" %}
+                          <option value="{{s.name}}">Platos principales | {{s.name}}</option>
+                        {% elif s.categoria == "Postre" %}
+                          <option value="{{s.name}}">Postres | {{s.name}}</option>
+                        {% elif s.categoria == "Iniciantes" %}
+                          <option value="{{s.name}}">Iniciantes | {{s.name}}</option>
+                          
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                  </div>
+                  
+                </div>
+                  
+                <div class="col-md-6 mb-3">
+                  <label for="validationCustom25">Precio</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="validationCustom25" placeholder="10" name="precio" required>
+                    <div class="invalid-feedback">
+                      Introducce un valor para el precio
+                    </div>
+                  </div>
+                  <label for="validationCustom25">Tiempo de elaboracion</label>
+                  <div class="input-group">
+                    <input type="time" class="form-control" id="validationCustom25" placeholder="" name="tiempo_elaboracion" required>
+                    <div class="invalid-feedback">
+                      Introducce un valor para el tiempo de elaboracion
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label for="validationCustom12">Descripción</label>
+                  <div class="input-group">
+                    <textarea rows="5" id="validationCustom12" class="form-control" placeholder="Descripción" name="historia" required></textarea>
+                    <div class="invalid-feedback">
+                      Por favor de alguna descripción.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label for="validationCustom12">Imagen del Plato</label>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="img" required>
+                    <label class="custom-file-label">Upload Images...</label>
+                  </div>
+                </div>
+
+                <button class="btn btn-primary d-block" type="submit">Agregar</button>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>
+{% endblock content %}

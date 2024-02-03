@@ -1,0 +1,53 @@
+{% extends "./layouts/base_admin.html" %} {% load static %} {% block content %}
+
+<div class="ms-content-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb pl-0">
+                <li class="breadcrumb-item"><a href="{% url "index" %}"><i class="material-icons">home</i>Página principal</a></li>
+                <li class="breadcrumb-item"><a href="{% url "admin" %}">Menu</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Subcategoría</li>
+              </ol>
+            </nav>
+          </div>
+        <div class="col-md-12">
+            <div class="ms-panel">
+                <div class="ms-panel-body">
+                    <div class="table-responsive">
+                        <table class="table w-100 thead-primary">
+                            <tr id="indice">
+                                <th>Subcategoria</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                            {% for s in sub %}
+                            <tr>
+                                <th>{{s.categoria}} | {{s.name}}</th>
+                                <th>
+                                    <form action="{% url "mostrar_categoria" %}" class="needs-validation clearfix" method="POST">
+                                        {% csrf_token %}
+                                        {% if s.activa %}
+                                        <button class="btn grid-btn mt-0 btn-sm btn-primary d-block" value="{{s.id}}" name="id" type="submit">Dejar de Mostrar</button>
+                                        {% else %}
+                                        <button class="btn grid-btn mt-0 btn-sm btn-primary d-block" value="{{s.id}}" name="id" type="submit">Mostrar</button>
+                                        {% endif %}
+                                        
+                                    </form>
+                                </th>
+                                <th>
+                                    <form action="{% url "eliminar_categoria" %}" class="needs-validation clearfix" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn grid-btn mt-0 btn-sm btn-secondary" value="{{s.id}}" name="sub">Eliminar</button>
+                                    </form>
+                                </th>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

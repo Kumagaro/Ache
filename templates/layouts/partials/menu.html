@@ -1,0 +1,168 @@
+<div id="fh5co-menus" data-section="menu">
+    <div class="container">
+        <div class="row text-center fh5co-heading row-padded">
+            <div class="col-md-8 col-md-offset-2">
+                <h2 class="heading to-animate">Menú</h2>
+                <p class="sub-heading to-animate">Disfrute de nuestro menú variado.</p>
+            </div>
+        </div>
+        <div class="row row-padded">
+            <div class="col-md-6">
+                <div class="fh5co-food-menu to-animate-2">
+                    <h2 class="fh5co-drinks">Bebidas</h2>
+                    {% for b in bebidas %}
+                    <h2 class="">{{b.name}}</h2>
+                    <ul>
+                        {% for pla in platos %}
+                        {% if pla.subcategoria_id == b.id %}
+                        {% if pla.disponible %}
+                        <li>
+                            <div class="fh5co-food-desc btn-abrir-modal" data-id="{{pla.id}}">
+                                <figure>
+                                    <img src="{{pla.imagen.url}}" class="img-responsive" alt="{{pla.name}}">
+                                </figure>
+                                <div>
+                                    <h3>{{pla.name}}</h3>
+                                    <p>{{pla.historia}}</p>
+                                </div>
+                            </div>
+                            <div class="fh5co-food-pricing">
+                                ${{pla.precio}}
+                            </div> 
+                        </li>
+                        <dialog class="to-animate-2" id="modal-{{pla.id}}">
+                            <div class="modal-container">
+                                <img src="{{pla.imagen.url}}" >
+                                <h3>{{pla.name}}</h2>
+                                <p>{{pla.historia}}</p>
+                                <p class="precio">${{pla.precio}}</p>
+                                <button class="btn-cerrar-modal">Cerrar</button>
+                            </div>
+                        </dialog>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="fh5co-food-menu to-animate-2">
+                    <h2 class="fh5co-dishes">Entrantes</h2>
+                    {% for e in entrantes %}
+                    <h2 class="">{{e.name}}</h2>
+                    <ul>
+                        {% for pla in platos %}
+                        {% if pla.subcategoria_id == e.id %}
+                        {% if pla.disponible %}
+                        <li> 
+                            <div class="fh5co-food-desc btn-abrir-modal" data-id="{{pla.id}}">
+                                <figure>
+                                    <img src="{{pla.imagen.url}}" class="img-responsive" alt="{{pla.name}}">
+                                </figure>
+                                <div>
+                                    <h3>{{pla.name}}</h3>
+                                    <p>{{pla.historia}}</p>
+                                </div>
+                            </div>
+                            <div class="fh5co-food-pricing">
+                                ${{pla.precio}}
+                            </div>
+                        </li>
+                        <dialog class="to-animate-2" id="modal-{{pla.id}}">
+                            <div class="modal-container">
+                                <img src="{{pla.imagen.url}}" >
+                                <h3>{{pla.name}}</h2>
+                                <p>{{pla.historia}}</p>
+                                <p class="precio">${{pla.precio}}</p>
+                                <button class="btn-cerrar-modal">Cerrar</button>
+                            </div>
+                        </dialog>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="fh5co-food-menu to-animate-2">
+                    <h2 class="fh5co-dish">Platos principales</h2>
+                    {% for p in platos_principales %}
+                    <h2 class="">{{p.name}}</h2>
+                    <ul>
+                        {% for pla in platos %}
+                        {% if pla.subcategoria_id == p.id %}
+                        {% if pla.disponible %}
+                        <li>
+                            <div class="fh5co-food-desc btn-abrir-modal" data-id="{{pla.id}}">
+                                <figure>
+                                    <img src="{{pla.imagen.url}}" class="img-responsive" alt="{{pla.name}}">
+                                </figure>
+                                <div>
+                                    <h3>{{pla.name}}</h3>
+                                    <p>{{pla.historia}}</p>
+                                </div>
+                            </div>
+                            <div class="fh5co-food-pricing">
+                                ${{pla.precio}}
+                            </div>
+                        </li>
+                        <dialog class="to-animate-2" id="modal-{{pla.id}}">
+                            <div class="modal-container">
+                                <img src="{{pla.imagen.url}}" >
+                                <h3>{{pla.name}}</h2>
+                                <p>{{pla.historia}}</p>
+                                <p class="precio">${{pla.precio}}</p>
+                                <button class="btn-cerrar-modal">Cerrar</button>
+                            </div>
+                        </dialog>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="fh5co-food-menu to-animate-2">
+                    <h2 class="fh5co-di">Postres</h2>
+                    {% for p in postres %}
+                    <h2 class="">{{p.name}}</h2>
+                    <ul>
+                        {% for pla in platos %}
+                        {% if pla.subcategoria_id == p.id %}
+                        {% if pla.disponible %}
+                        <li>
+                            <div class="fh5co-food-desc btn-abrir-modal" data-id="{{pla.id}}">
+                                <figure>
+                                    <img src="{{pla.imagen.url}}" class="img-responsive" alt="{{pla.name}}">
+                                </figure>
+                                <div>
+                                    <h3>{{pla.name}}</h3>
+                                    <p>{{pla.historia}}</p>
+                                </div>
+                            </div>
+                            <div class="fh5co-food-pricing">
+                                ${{pla.precio}}
+                            </div>
+                        </li>
+                        <dialog class="to-animate-2" id="modal-{{pla.id}}">
+                            <div class="modal-container">
+                                <img src="{{pla.imagen.url}}" >
+                                <h3>{{pla.name}}</h2>
+                                <p>{{pla.historia}}</p>
+                                <p class="precio">${{pla.precio}}</p>
+                                <button class="btn-cerrar-modal">Cerrar</button>
+                            </div>
+                        </dialog>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
