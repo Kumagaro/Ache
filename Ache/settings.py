@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'Ache.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Ache_database',
+        'NAME': 'Ache',
         'USER': 'postgres',
-        'PASSWORD': 'Nagitolg.1',
+        'PASSWORD': '12345678',
         'HOST': '127.0.0.1',
         'PORT': '5432'
     }
